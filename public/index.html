@@ -7,13 +7,19 @@
 </head>
 <body>
 
-<div class="container">
-    <h1>💰 Expense Tracker</h1>
+<div class="bg"></div>
 
-    <div class="form">
-        <input type="text" id="title" placeholder="Expense Name">
+<div class="app">
+    <h1>💸 Expense Tracker</h1>
+
+    <div class="card">
+        <input type="text" id="title" placeholder="Expense name">
         <input type="number" id="amount" placeholder="Amount">
-        <button onclick="addExpense()">Add</button>
+        <button onclick="addExpense()">Add Expense</button>
+    </div>
+
+    <div class="summary">
+        <h2 id="total">Total: ₹0</h2>
     </div>
 
     <ul id="expense-list"></ul>

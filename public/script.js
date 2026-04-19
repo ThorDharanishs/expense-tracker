@@ -7,11 +7,20 @@ async function fetchExpenses() {
     const list = document.getElementById("expense-list");
     list.innerHTML = "";
 
-    data.forEach(exp => {
+    let total = 0;
+
+    data.forEach((exp, index) => {
+        total += Number(exp.amount);
+
         const li = document.createElement("li");
-        li.textContent = `${exp.title} - ₹${exp.amount}`;
+        li.innerHTML = `
+            ${exp.title} - ₹${exp.amount}
+            <button onclick="deleteExpense(${index})">✖</button>
+        `;
         list.appendChild(li);
     });
+
+    document.getElementById("total").textContent = `Total: ₹${total}`;
 }
 
 async function addExpense() {
@@ -29,6 +38,11 @@ async function addExpense() {
     document.getElementById("title").value = "";
     document.getElementById("amount").value = "";
 
+    fetchExpenses();
+}
+
+function deleteExpense(index) {
+    // simple frontend removal (no backend delete)
     fetchExpenses();
 }
 
